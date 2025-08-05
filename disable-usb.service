@@ -1,0 +1,11 @@
+[Unit]
+Description=Disable USB ports if /boot/firmware/disable_usb exists
+After=multi-user.target
+ConditionPathExists=/sys/devices/platform/soc/3f980000.usb/buspower
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/disable-usb-if-flagged.sh
+
+[Install]
+WantedBy=multi-user.target
